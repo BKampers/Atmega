@@ -78,21 +78,7 @@ void setup()
 
 void setBufferChar(uint8_t index)
 {
-    //printValue("index                ", index);
-    //printValue("pressed & _BV(index) ", pressed & _BV(index));
-    //printValue("released & _BV(index)", released & _BV(index));
-    if (pressed & _BV(index))
-    {
-       buffer[index] = PRESSED_CHAR;
-    }
-    else if (released & _BV(index))
-    {
-        buffer[index] = RELEASED_CHAR;
-    }
-    else
-    {
-        buffer[index] =  UNCHANGED_CHAR;
-    }
+    
 }
 
 
@@ -110,8 +96,7 @@ int main(void)
         released = (buttonState ^ previousButtonState) & ~previousButtonState;
         for (uint8_t i = SELECT_BUTTON_PIN; i <= LEFT_BUTTON_PIN; ++i)
         {
-     
-            setBufferChar(i);
+            buffer[i] = ((pressed & _BV(i)) != 0) ? PRESSED_CHAR : ((released & _BV(i)) != 0) ? RELEASED_CHAR : UNCHANGED_CHAR;
         }
         buffer[5] = '\0';
         lcdSetCursor(0, 1);

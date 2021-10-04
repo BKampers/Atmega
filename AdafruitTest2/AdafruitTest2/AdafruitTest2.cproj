@@ -143,12 +143,6 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="OneWire.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="OneWire.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="uart.c">
       <SubType>compile</SubType>
     </Compile>
