@@ -76,12 +76,6 @@ void setup()
 }
 
 
-void setBufferChar(uint8_t index)
-{
-    
-}
-
-
 int main(void)
 {
     setup();

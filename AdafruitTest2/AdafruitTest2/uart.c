@@ -10,8 +10,12 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 
-// UBBR_VALUE: lrint(( F_CPU / (16L * baud) ) - 1);
-#define  UBBR_VALUE 12
+#ifdef BAUD_RATE
+#define UBBR_VALUE ((F_CPU / (16L * BAUD_RATE)) - 1)
+#else
+/* 4800 baud @ 1 MHz */
+#define UBBR_VALUE 12
+#endif
 
 char sendBuffer[SEND_BUFFER_SIZE];
 char receiveBuffer[RECEIVE_BUFFER_SIZE];
